@@ -1,0 +1,14 @@
+﻿@model CompanyService
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+
+            <div class="card col-md-3 col-sm-3  fadeInDown">
+                <div class="service-content text-center">
+                    <a href="Home/ServiceDetail/@Model.Id"><span class="service-icon icon-pentagon"><i class="@Model.icon"></i></span></a>
+                    <h3>@Model.name</h3>
+                    <p>@Model.shortexplanation</p>
+                </div>
+            </div>

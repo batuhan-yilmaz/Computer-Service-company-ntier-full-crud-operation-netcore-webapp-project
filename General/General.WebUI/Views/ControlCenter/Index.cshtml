@@ -1,0 +1,295 @@
+﻿@model General.WebUI.Models.ControlCenterModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/ControlCenter/_ControlCenterLayout.cshtml";
+}
+
+<section id="content">
+
+    <div class="col-md-12">
+        <div class="alert alert-danger">
+            <div class="container-fluid">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons">X</i></span>
+                </button>
+                <b>Uyarı:</b> Bu sayfada yaptığınız değişiklikler sitenizin görünen tarafını etkilemektedir.
+            </div>
+        </div>
+
+
+
+        <div class="alert alert-warning">
+            <div class="container-fluid">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons">X</i></span>
+                </button>
+                <b>Dikkat:</b> Fotoğraflarınızı yeniden boyutlandırmak için sol tarafaki <a href="ControlCenter/ImageEditor">"Fotoğraf Editörü"</a>nü kullanabilirsiniz.
+            </div>
+        </div>
+
+
+
+
+        <div class="boxs-body">
+            <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+                <ul class="nav nav-tabs" id="myTabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true"><h3>Anasayfa Ayarları</h3> </a>
+                    </li>
+                   
+
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <!--Anasayfa--->
+                    <div class="tab-pane fade active in" role="tabpanel" id="home" aria-labelledby="home-tab">
+                        <form asp-controller="ControlCenter" asp-action="EditControlCenterSettings" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+                            @foreach (var item in Model.ControlCenters)
+                            {
+
+                                <div class="page page-forms-common">
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <section class="boxs">
+                                                <div class="boxs-header">
+                                                    <h3 class="custom-font hb-green">
+                                                        <strong>Firma Logosu </strong>
+                                                    </h3>
+                                                </div>
+                                                <div class="boxs-body">
+                                                    <div class="form-group">
+                                                        <div class="col-md-3">
+                                                            <img src="~/images/@item.Logo" alt="Logo Fotoğraf" style="width:100px; height:32px;">
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <label class="col-sm-2 control-label">Dosya Adresi</label>
+                                                            <div class="col-sm-10">
+                                                                <input name="logofile" type="file" class="filestyle" data-buttonText="Seç" data-iconName="fa fa-inbox">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                </div>
+                                            </section>
+                                            <section class="boxs">
+                                                <div class="boxs-header">
+                                                    <h3 class="custom-font hb-green">
+                                                        <strong>Sosyal Ağ </strong>Bilgileri
+                                                    </h3>
+                                                </div>
+                                                <div class="boxs-body">
+                                                    <div class="form-group">
+                                                        <label for="inputEmail3" class="col-sm-2 control-label">Sosyal Ağ 1</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" value="@item.socialnetwork1" name="socialnetwork1" id="inputEmail3" placeholder="Facebook">
+                                                            <p class="help-block mb-0">Email.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputEmail3" class="col-sm-2 control-label">Sosyal Ağ 2</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" value="@item.socialnetwork2" name="socialnetwork2" id="inputEmail3" placeholder="Instagram">
+                                                            <p class="help-block mb-0">Telefon.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputEmail3" class="col-sm-2 control-label">Sosyal Ağ 3</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" value="@item.socialnetwork3" name="socialnetwork3" id="inputEmail3" placeholder="Pinterest">
+                                                            <p class="help-block mb-0">WebSitesi.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputEmail3" class="col-sm-2 control-label">Sosyal Ağ 4 </label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" value="@item.socialnetwork4" name="socialnetwork4" id="inputEmail3" placeholder="Twitter">
+                                                            <p class="help-block mb-0">Fiziksel Adres</p>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </div>
+                                            </section>
+                                            <section class="boxs">
+                                                <div class="boxs-header">
+                                                    <h3 class="custom-font hb-green">
+                                                        <strong>Adres & Telefon </strong>Bilgileri
+                                                    </h3>
+                                                </div>
+                                                <div class="boxs-body">
+                                                    <div class="form-group">
+                                                        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="email" class="form-control" name="Email" id="inputEmail3" placeholder="Email Address" value="@item.Email">
+                                                            <p class="help-block mb-0">Email.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputEmail3" class="col-sm-2 control-label">Telefon</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" name="Phone" id="inputEmail3" placeholder="Telefon" value="@item.Phone">
+                                                            <p class="help-block mb-0">Telefon.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputEmail3" class="col-sm-2 control-label">WebSitesi</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" name="webadress" id="inputEmail3" placeholder="Websitesi" value="@item.webadress">
+                                                            <p class="help-block mb-0">WebSitesi.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputEmail3" class="col-sm-2 control-label">Fiziksel Adres</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" name="Adress" id="inputEmail3" placeholder="Tam Adres" value="@item.Adress">
+                                                            <p class="help-block mb-0">Fiziksel Adres</p>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </div>
+                                            </section>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <section class="boxs">
+                                                <div class="boxs-header">
+                                                    <h3 class="custom-font hb-green">
+                                                        <strong>Arka Plan Parallax Fotoğraflar </strong>
+                                                    </h3>
+                                                </div>
+                                                <div class="boxs-body">
+                                                    <div class="form-group">
+                                                        <div class="col-md-12">
+                                                            <img src="~/images/parallax/@item.parallax1" alt="Logo Fotoğraf" style="width:200px; height:200px;">
+                                                        </div>
+
+                                                        <div class="col-md-12">
+                                                            <label class="col-sm-2 control-label">Dosya Adresi</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="file" class="filestyle" name="parallax1" data-buttonText="Seç" data-iconName="fa fa-inbox">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-md-12">
+                                                            <img src="~/images/parallax/@item.parallax2" alt="Logo Fotoğraf" style="width:200px; height:200px;">
+                                                        </div>
+
+                                                        <div class="col-md-12">
+                                                            <label class="col-sm-2 control-label">Dosya Adresi</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="file" class="filestyle" name="parallax2" data-buttonText="Seç" data-iconName="fa fa-inbox">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-md-12">
+                                                            <img src="~/images/parallax/@item.parallax3" alt="Logo Fotoğraf" style="width:200px; height:200px;">
+                                                        </div>
+
+                                                        <div class="col-md-12">
+                                                            <label class="col-sm-2 control-label">Dosya Adresi</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="file" class="filestyle" name="parallax3" data-buttonText="Seç" data-iconName="fa fa-inbox">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                </div>
+                                            </section>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <section class="boxs">
+                                                <div class="boxs-header">
+                                                    <h3 class="custom-font hb-green">
+                                                        <strong>Anasayfa Slider Fotoğrafları </strong>
+                                                    </h3>
+                                                </div>
+                                                <div class="boxs-body">
+                                                    <div class="form-group">
+                                                        <div class="col-md-12">
+                                                            <img src="~/images/slider/@item.mainsliderimage" alt="Logo Fotoğraf" style="width:200px; height:200px;">
+                                                        </div>
+
+                                                        <div class="col-md-12">
+                                                            <label class="col-sm-2 control-label">Dosya Adresi</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="file" class="filestyle"  name="mainsliderimage" data-buttonText="Seç" data-iconName="fa fa-inbox">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-md-12">
+                                                            <img src="~/images/slider/@item.mainsliderimage2" alt="Logo Fotoğraf" style="width:200px; height:200px;">
+                                                        </div>
+
+                                                        <div class="col-md-12">
+                                                            <label class="col-sm-2 control-label">Dosya Adresi</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="file" class="filestyle" name="mainsliderimage2" data-buttonText="Seç" data-iconName="fa fa-inbox">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-md-12">
+                                                            <img src="~/images/slider/@item.mainsliderimage3" alt="Logo Fotoğraf" style="width:200px; height:200px;">
+                                                        </div>
+
+                                                        <div class="col-md-12">
+                                                            <label class="col-sm-2 control-label">Dosya Adresi</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="file" class="filestyle" name="mainsliderimage3"  data-buttonText="Seç" data-iconName="fa fa-inbox">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-md-12">
+                                                            <img src="~/images/slider/@item.mainsliderimage4" alt="Logo Fotoğraf" style="width:200px; height:200px;">
+                                                        </div>
+
+                                                        <div class="col-md-12">
+                                                            <label class="col-sm-2 control-label">Dosya Adresi</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="file" class="filestyle" name="mainsliderimage4" data-buttonText="Seç" data-iconName="fa fa-inbox">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                </div>
+                                            </section>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <button type="submit" class="btn btn-raised btn-primary">Kaydet</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            }
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,63 @@
+﻿@model CompanyServiceModel
+@{
+    ViewData["Title"] = "Services";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="banner-area">
+    <img src="../images/banner/banner2.jpg" alt="" />
+    <div class="parallax-overlay"></div>
+    <!-- Subpage title start -->
+    <div class="banner-title-content">
+        <div class="text-center">
+            <h2>Serviceslerimiz</h2>
+            <ul class="breadcrumb">
+                <li>Anasayfa</li>
+                <li><a href="#"> Servislerimiz</a></li>
+            </ul>
+        </div>
+    </div><!-- Subpage title end -->
+</div><!-- Banner area end -->
+<!-- Main container start -->
+<section class="call-to-action">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Hemen bizimle iletişime geçin!</h3>
+                <a href="index.html#contact" class="pull-right btn btn-primary white">İletişim</a>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+
+    <!-- Services -->
+
+    <div class="row">
+        <div class="col-md-12 heading">
+            <span class="title-icon classic pull-left"><i class="fa fa-cogs"></i></span>
+            <h2 class="title classic">Servislerimiz</h2>
+        </div>
+    </div>
+
+    <div class="row" data-masonry='{"percentPosition": true }'>
+        @foreach (var item in Model.CompanyServices)
+
+        {
+
+
+            <div class="col-md-4 col-sm-4 col-lg-4 wow fadeInDown" data-wow-delay=".5s">
+                <div class="service-content ">
+                    <a href="ServiceDetail/@item.Id"><span class="service-image"><img class="img-responsive" src="~/images/services/@item.image" alt="" style="width:400px; height:250px;" /></span></a>
+                    <h3>@item.name</h3>
+                    <p class="explanation">@item.shortexplanation<a href="ServiceDetail/@item.Id"><span style="color:red;">Devamını okuyun..</span></a></p>
+                </div>
+            </div>
+        }
+        <!--/ End first service -->
+
+
+
+    </div><!-- Content Row end -->
+    <!-- Services end -->
+
+</div><!--/ 1st container end -->

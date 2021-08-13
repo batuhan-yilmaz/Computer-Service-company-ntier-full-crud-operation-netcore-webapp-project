@@ -1,0 +1,79 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model LoginModel
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8" />
+    <title>:: 3ES - Bilgisayar Admin Paneli::</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/assets/js/vendor/bootstrap/bootstrap.min.css">
+    <!-- CSS Files -->
+    <link href="~/assets/css/main.css" rel="stylesheet">
+</head>
+
+<body id="falcon" class="authentication">
+    <div class="wrapper">
+        <div class="header header-filter" background-size: cover; background-position: top center;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 text-center">
+                        <div class="card card-signup">
+                            <form class="form" asp-controller="Account" asp-action="Login">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
+                                <div class="header header-primary text-center">
+                                    <h4>Admin</h4>
+                                    <div class="social-line">
+                                        <a href="#" class="btn btn-just-icon">
+                                            <i class="fa fa-instagram"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-just-icon">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-just-icon">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h3 class="mt-0">3ES Bilgisayar</h3>
+                                <div class="content">
+                                    <div class="form-group">
+                                        <input type="email" name="Email" class="form-control underline-input" placeholder="Mail adresinizi giriniz.">
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="Password" placeholder="Şifrenizi giriniz." class="form-control underline-input">
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+                                <div class="footer text-center">
+                                    <input type="submit" class="btn btn-info btn-raised" value="Giriş yap">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer mt-20">
+                <div class="container">
+                    <div class="col-lg-12 text-center">
+                        <div class="copyright mt-20 text-darkgray">
+                            &copy; 2020,
+                            <i class="fa fa-diamond diamond"></i> by
+                            <a href="http://oasisinovation.com" target="_blank">OASISINNOVATION</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+</body>
+</html>

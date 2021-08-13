@@ -1,0 +1,134 @@
+﻿<!doctype html>
+<html class="no-js " lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>:: Yönetici Paneli ::</title>
+    <link rel="icon" type="image/ico" href="~/assets/images/favicon.ico" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/assets/js/vendor/bootstrap/bootstrap.min.css">
+    <!-- Stylesheets-->
+    <link rel="stylesheet" href="~/assets/js/vendor/touchspin/jquery.bootstrap-touchspin.min.css">
+    <!-- vendor css files -->
+    <link rel="stylesheet" href="~/assets/css/vendor/animsition.min.css">
+    <link rel="stylesheet" href="~/assets/js/vendor/cropper/cropper.min.css">
+    <link rel="stylesheet" href="~/assets/js/vendor/chosen/chosen.css">
+    <link rel="stylesheet" href="~/assets/js/vendor/summernote/summernote.css">
+    <!-- project main css files -->
+    <link rel="stylesheet" href="~/assets/css/main.css">
+    <!--/ stylesheets -->
+
+</head>
+<body id="falcon" class="main_Wrapper">
+    <!--  Application Content  -->
+    <div id="wrap" class="animsition">
+        <!-- HEADER Content -->
+        <div id="header">
+            <header class="clearfix">
+                <!-- Branding -->
+                <div class="branding">
+                    <a class="brand" href="#">
+                        <span>3ES BİLGİSAYAR</span>
+                    </a>
+                    <a role="button" tabindex="0" class="offcanvas-toggle visible-xs-inline">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+                <!-- Branding end -->
+                <!-- Left-side navigation -->
+                <ul class="nav-left pull-left list-unstyled list-inline">
+                    <li class="leftmenu-collapse">
+                        <a role="button" tabindex="0" class="collapse-leftmenu">
+                            <i class="fa fa-outdent"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Account" asp-action="Logout" class="dropdown-item">
+                            <i class="fa fa-sign-out"></i>Logout
+                        </a>
+                    </li>
+                 </ul>
+            </header>
+
+
+        </div>
+        <!-- Left-side navigation end -->
+        <!-- Search end -->
+        <!-- Right-side navigation -->
+
+    </div>
+    <!--/ HEADER Content  -->
+    <!--  CONTROLS Content -->
+    <div id="controls">
+        <!--SIDEBAR Content -->
+        <aside id="leftmenu">
+            <div id="leftmenu-wrap">
+                <div class="panel-group slim-scroll" role="tablist">
+                    <div class="panel panel-default">
+                        <div id="leftmenuNav" class="panel-collapse collapse in" role="tabpanel">
+                            <div class="panel-body">
+                                <!--  NAVIGATION Content -->
+                                <ul id="navigation">
+                                    <li class="@(ViewBag.menuactive=="Index"?"active":"")"><a asp-controller="ControlCenter" asp-action="Index"><i class="fa fa-dashboard"></i> <span>Anasayfa</span></a></li>
+                                    <li class="@(ViewBag.menuactive=="Index"?"active":"")"><a asp-controller="ControlCenter" asp-action="OurServices"><i class="fa fa-bank"></i> <span>Servislerim</span></a></li>
+                                    <li class="@(ViewBag.menuactive=="Index"?"active":"")"><a asp-controller="ControlCenter" asp-action="CreateService"><i class="fa fa-save"></i> <span>Yeni Servis Ekle</span></a></li>
+                                    <li class="@(ViewBag.menuactive=="ImageEditor"?"active":"")"><a asp-controller="ControlCenter" asp-action="ImageEditor"><i class="fa fa-calendar-check-o"></i> <span>Fotoğraf Editörü</span> <span class="label label-primary">Özel İçerik</span></a></li>
+                                </ul>
+                                <!--/ NAVIGATION Content -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </aside>
+        <!--/ SIDEBAR Content -->
+
+    </div>
+    <!--/ CONTROLS Content -->
+    <!-- CONTENT  -->
+    @RenderBody()
+    <!--/ CONTENT -->
+    <!--/ Application Content -->
+    <!-- Vendor JavaScripts -->
+    <script src="~/assets/bundles/libscripts.bundle.js"></script>
+
+    <script src="~/assets/bundles/vendorscripts.bundle.js"></script>
+    <!--/ vendor javascripts -->
+    <script src="~/assets/js/vendor/parsley/parsley.min.js"></script>
+    <!--  Custom JavaScripts -->
+    <script src="~/assets/js/vendor/sparkline/jquery.sparkline.min.js"></script>
+    <script src="~/assets/js/vendor/animsition/js/jquery.animsition.min.js"></script>
+    <script src="~/assets/js/vendor/screenfull/screenfull.min.js"></script>
+    <script src="~/assets/js/vendor/slider/bootstrap-slider.min.js"></script>
+    <script src="~/assets/js/vendor/colorpicker/js/bootstrap-colorpicker.min.js"></script>
+    <script src="~/assets/js/vendor/touchspin/jquery.bootstrap-touchspin.min.js"></script>
+    <script src="~/assets/js/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/assets/js/vendor/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/assets/js/vendor/chosen/chosen.jquery.min.js"></script>
+    <script src="~/assets/js/vendor/summernote/summernote.min.js"></script>
+    <script src="~/assets/js/vendor/filestyle/bootstrap-filestyle.min.js"></script>
+    <script src="~/assets/bundles/mainscripts.bundle.js"></script> <!-- Custom Js -->
+    <script src="~/assets/js/vendor/cropper/cropper.min.js"></script>
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Message',
+            tabsize: 2,
+            height: 300,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });;
+    </script>
+
+    <!--/ custom javascripts -->
+</body>
+</html>

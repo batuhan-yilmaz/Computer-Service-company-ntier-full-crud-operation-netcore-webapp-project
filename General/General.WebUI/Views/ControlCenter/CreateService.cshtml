@@ -1,0 +1,100 @@
+﻿@model CompanyServiceModel
+@{
+    ViewData["Title"] = "CreateService";
+    Layout = "~/Views/Shared/ControlCenter/_ControlCenterLayout.cshtml";
+}
+
+<section id="content">
+    <section class="boxs">
+        <div class="boxs-header">
+            <h3 class="custom-font hb-blush">
+                <strong>Bu sayfadan yeni servis hizmeti </strong> ekleyebilirsiniz.
+            </h3>
+
+        </div>
+        <div class="boxs-body">
+            <form class="form-horizontal" asp-action="CreateService" asp-controller="ControlCenter" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="input01" class="col-sm-2 control-label">Servisin Adı:</label>
+                    <div class="col-sm-10">
+                        <input type="text" value="" class="form-control" name="name" id="input01" data-parsley-trigger="change" data-parsley-range="[3, 20]" required>
+                        <span asp-validation-for="name" class="help-block mb-0"></span>
+                    </div>
+                </div>
+                <hr class="line-dashed full-witdh-line" />
+                <div class="form-group">
+                    <label for="input02" class="col-sm-2 control-label">Servisin Açıklaması Kısaca: </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input02" name="shortexplanation" data-parsley-trigger="change" required>
+                        <span class="help-block mb-0">(Maksimim 100 karakterle servisinizi özetleyiniz.)</span>
+                        <span asp-validation-for="shortexplanation" class="help-block mb-0"></span>
+                    </div>
+                </div>
+                <hr class="line-dashed full-witdh-line" />
+                <div class="form-group">
+                    <label for="input03" class="col-sm-2 control-label">Servisin Açıklaması Uzun:</label>
+                    <div class="col-sm-10">
+                        <textarea type="text" class="form-control" id="summernote" name="longexplanation" data-parsley-trigger="change"></textarea>
+                        <span class="help-block mb-0">(İstediğiniz uzunlukta bir açıklama yazabilirsiniz.)</span>
+                        <span asp-validation-for="longexplanation" class="help-block mb-0"></span>
+                    </div>
+                </div>
+                <hr class="line-dashed full-witdh-line" />
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Servisin İconu</label>
+                    <div class="col-sm-10 alfa">
+                        <select class="chosen-select " style="width: 240px;" name="se" data-parsley-trigger="change" required>
+                            <option value="fa fa-dollar">Dolar</option>
+                            <option value="fa fa-lightbulb-o">Ampul</option>
+                            <option value="service-icon icon-pentagon">Şeffaf Kutu</option>
+                            <option value="fa fa-bar-chart">Bar Grafiği</option>
+                            <option value="fa fa-comments">Konuşma Baloncuğu</option>
+                            <option value="fa fa-server">Server</option>
+                            <option value="fa fa-camera">Camera</option>
+                            <option value="fa fa-database">Database</option>
+                            <option value="service-icon icon-pentagon">Kalkan</option>
+                            <option value="fa fa-table">Tablo</option>
+                            <option value="fa fa-pagelines">Yaprak</option>
+                            <option value="fa fa-diamond">Elmas</option>
+                            <option value="fa fa-users">Çoklu İnsan</option>
+                            <option value="fa fa-desktop">Masaüstü Bilgisayar</option>
+
+                        </select>
+                    </div>
+                    <span asp-validation-for="icon" class="help-block mb-0"></span>
+                    <input type="hidden" class="form-control" id="input04" name="icon" value="@Model.icon">
+                </div>
+
+                <hr class="line-dashed full-witdh-line" />
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"> Servisin Fotoğrafı</label>
+                    <div class="col-sm-10">
+                        <input type="hidden" name="image" value="@Model.image" />
+                        <input type="file" class="filestyle" data-buttonText="Dosya bul." data-iconName="fa fa-inbox" name="file" value="@Model.image" required>
+                        <span asp-validation-for="image" class="help-block mb-0"></span>
+                    </div>
+                </div>
+                <hr class="line-dashed full-witdh-line" />
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <button type="reset" class="btn btn-raised btn-danger">İptal</button>
+                        <button type="submit" class="btn btn-raised btn-default" id="form3Submit">Kaydet ve Değiştir</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</section>
+<script src="~/js/jquery.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $(".alfa select").on("change", function () {
+            var selVal = $(this).val();
+            $('#input04').val(selVal);
+        });
+
+    });
+
+</script>

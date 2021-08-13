@@ -1,0 +1,99 @@
+﻿@model General.WebUI.Models.ControlCenterModel
+
+@{
+    ViewData["Title"] = "OurServices";
+    Layout = "~/Views/Shared/ControlCenter/_ControlCenterLayout.cshtml";
+}
+
+<section id="content">
+
+    <div class="col-md-12">
+        <div class="alert alert-danger">
+            <div class="container-fluid">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons">X</i></span>
+                </button>
+                <b>Uyarı:</b> Bu sayfada yaptığınız değişiklikler sitenizin görünen tarafını etkilemektedir.
+            </div>
+        </div>
+
+
+
+        <div class="alert alert-warning">
+            <div class="container-fluid">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons">X</i></span>
+                </button>
+                <b>Dikkat:</b> Fotoğraflarınızı yeniden boyutlandırmak için sol tarafaki <a href="ControlCenter/ImageEditor">"Fotoğraf Editörü"</a>nü kullanabilirsiniz.
+            </div>
+        </div>
+
+
+
+
+        <div class="boxs-body">
+            <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+                <ul class="nav nav-tabs" id="myTabs" role="tablist">
+
+                    <li role="presentation" class="">
+                        <a href="#services" role="tab" id="services-tab" data-toggle="tab" aria-controls="services" aria-expanded="false"><h3>Servislerimiz</h3></a>
+                    </li>
+
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <!--Servisler--->
+                    <div class="tab-pane fade active in" role="tabpanel" id="services" aria-labelledby="services-tab">
+                        <section class="boxs">
+                            <!-- boxs header -->
+                            <div class="row">
+
+                                <div class="col-sm-4 col-xs-6">
+                                    <button class="btn btn-raised btn-success" type="submit"
+                                            onclick="window.location='/ControlCenter/CreateService';" />Yeni Servis Ekle
+                                </div>
+                            </div>
+
+                            <div class="boxs-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table mb-0" id="usersList">
+                                        <thead>
+                                            <tr>
+
+                                                <th>Servis Adı:</th>
+                                                <th style="width:30px;">İşlem</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+
+                                            @foreach (var item in Model.CompanyServices)
+                                            {
+                                                <tr>
+
+                                                    <td style="width:30px;">@item.name</td>
+                                                    <td>
+                                                        <button class="btn btn-warning btn-raised" onclick="window.location='/ControlCenter/ServiceDetail/@item.Id'">Düzenle</button>
+                                                        <form asp-controller="ControlCenter" asp-action="DeleteService" method="post" style="display:inline;">
+                                                            <input type="hidden" name="serviceId" value="@item.Id" />
+                                                            <button class="btn btn-danger btn-raised" type="submit">Sil</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /boxs body -->
+
+
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

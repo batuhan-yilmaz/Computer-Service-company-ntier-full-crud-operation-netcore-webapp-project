@@ -1,0 +1,48 @@
+﻿@model CreateRole
+@{
+    ViewData["Title"] = "CreateRole";
+    Layout = "~/Views/Shared/ControlCenter/_ControlCenterLayout.cshtml";
+}
+
+<section id="content">
+    <section class="boxs">
+        <div class="boxs-header">
+            <h3 class="custom-font hb-blush">
+                <strong>Bu sayfadan yeni servis hizmeti </strong> ekleyebilirsiniz.
+            </h3>
+
+        </div>
+        <div class="boxs-body">
+            <form class="form-horizontal" asp-action="CreateRole" asp-controller="ControlCenter" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="input01" class="col-sm-2 control-label">Rolün Adı:</label>
+                    <div class="col-sm-10">
+                        <input type="text"  asp-for="RoleName" value="" class="form-control" name="RoleName" id="input01" data-parsley-trigger="change" data-parsley-range="[3, 20]" required>
+                        <span asp-validation-for="RoleName" class="help-block mb-0"></span>
+                    </div>
+                </div>
+                <hr class="line-dashed full-witdh-line" />
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <button type="reset" class="btn btn-raised btn-danger">İptal</button>
+                        <button type="submit" class="btn btn-raised btn-default" id="form3Submit">Yeni Rol Oluştur</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</section>
+<script src="~/js/jquery.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $(".alfa select").on("change", function () {
+            var selVal = $(this).val();
+            $('#input04').val(selVal);
+        });
+
+    });
+
+</script>
+
